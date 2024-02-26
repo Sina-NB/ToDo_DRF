@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.views import View
-from rest_framework.serializers import ModelSerializer
+
 
 # Create your views here.
 class IndexView(View):

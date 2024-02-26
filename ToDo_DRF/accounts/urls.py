@@ -5,4 +5,5 @@ app_name = "accounts"
 
 urlpatterns = [
     path("", IndexView.as_view(), name="index-page"),
+    path("api/v1/", include("accounts.api.v1.urls")),
 ]
