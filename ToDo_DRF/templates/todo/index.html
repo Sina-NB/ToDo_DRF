@@ -69,7 +69,7 @@
 
     function buildList() {
         var wrapper = document.getElementById('list-wrapper')
-        var url = 'http://127.0.0.1:8000/todo/api/task-list'
+        var url = '/todo/api/v1/task-list'
         fetch(url)
             .then((resp) => resp.json())
             .then(function (data) {
@@ -155,9 +155,9 @@
     form.addEventListener('submit', function (e) {
         e.preventDefault()
         // console.log('Form submitted')
-        var url = 'http://127.0.0.1:8000/todo/api/task-list/'
+        var url = '/todo/api/v1/task-list/'
         if (activeItem != null) {
-            var url = `http://127.0.0.1:8000/todo/api/task-detail/${activeItem.id}/`
+            var url = `/todo/api/v1/task-detail/${activeItem.id}/`
             activeItem = null
             document.getElementById('submit').textContent = "Add"
         }
@@ -193,7 +193,7 @@
 
     function deleteItem(item) {
         // console.log('Delete clicked')
-        fetch(`http://127.0.0.1:8000/todo/api/task-detail/${item.id}/`, {
+        fetch(`todo/api/v1/task-detail/${item.id}/`, {
             method: 'DELETE',
             headers: {
                 'Content-type': 'application/json',
@@ -208,7 +208,7 @@
         // console.log('Strike clicked')
 
         item.completed = !item.completed
-        fetch(`http://127.0.0.1:8000/todo/api/task-detail/${item.id}/`, {
+        fetch(`/todo/api/v1/task-detail/${item.id}/`, {
             method: 'POST',
             headers: {
                 'Content-type': 'application/json',
@@ -224,7 +224,7 @@
     let logout = document.getElementById('logout')
     logout.addEventListener('click', function (e) {
         const Http = new XMLHttpRequest();
-        const url = 'http://127.0.0.1:8000/accounts/api/logout/'
+        const url = '/accounts/api/v1/logout/'
         Http.open("GET", url);
         Http.send();
 

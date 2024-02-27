@@ -6,6 +6,7 @@ from rest_framework import serializers
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=255, label="username")
     password = serializers.CharField(max_length=128, write_only=True)
+    remember_me = serializers.BooleanField()
 
     def validate(self, data):
         username = data.get("username")

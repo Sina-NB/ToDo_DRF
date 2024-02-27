@@ -1,8 +1,3 @@
-from django.contrib import admin
-from .models import TaskModel
-
+# from django.contrib import admin
 
 # Register your models here.
-@admin.register(TaskModel)
-class TaskAdmin(admin.ModelAdmin):
-    list_display = ["user", "title", "completed", "created_date"]

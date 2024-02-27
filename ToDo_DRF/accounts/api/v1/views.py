@@ -30,7 +30,12 @@ class LoginApiView(APIView):
         if serializer.is_valid():
             username = serializer.validated_data["username"]
             password = serializer.validated_data["password"]
+            remember_me = serializer.validated_data["remember_me"]
             user = authenticate(request, username=username, password=password)
+            if remember_me:
+                request.session.set_expiry(1209600)
+            else:
+                request.session.set_expiry(0)
             login(request, user)
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

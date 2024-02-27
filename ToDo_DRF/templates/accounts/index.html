@@ -67,7 +67,7 @@
 
                             <div class="checkbox mb-3">
                                 <label>
-                                    <input type="checkbox" value="remember-me"> Remember me
+                                    <input type="checkbox" name="remember_me" value="remember-me" id="login-remember_me"> Remember me
                                 </label>
                             </div>
                             <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
@@ -146,6 +146,7 @@
         let url = '/accounts/api/v1/login'
         let login_username = document.getElementById('login-username').value
         let login_password = document.getElementById('login-password').value
+        let login_remember_me = document.getElementById('login-remember_me').checked
         console.log(login_username + ' ' + login_password)
         var Http = new XMLHttpRequest();
         Http.open("POST", url);
@@ -166,7 +167,7 @@
                 }
             }
         }
-        data = JSON.stringify({ 'username': login_username, 'password': login_password })
+        data = JSON.stringify({ 'username': login_username, 'password': login_password, 'remember_me': login_remember_me })
         Http.send(data);
     });
 

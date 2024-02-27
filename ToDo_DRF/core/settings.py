@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "rest_framework",
     # My apps
     "accounts",
+    "todo",
 ]
 
 MIDDLEWARE = [
@@ -139,3 +140,6 @@ REST_FRAMEWORK = {
         "rest_framework.authentication.SessionAuthentication",
     ]
 }
+
+# Authentication
+LOGIN_URL = "/accounts/"
