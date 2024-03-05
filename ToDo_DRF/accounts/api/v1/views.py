@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.shortcuts import redirect
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -26,6 +27,8 @@ class RegisterApiView(APIView):
 
 class LoginApiView(APIView):
     def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect("/")
         serializer = LoginSerializer(data=request.data)
         if serializer.is_valid():
             username = serializer.validated_data["username"]
