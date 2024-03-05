@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Third-parties
     "rest_framework",
+    'drf_yasg',
     # My apps
     "accounts",
     "todo",
