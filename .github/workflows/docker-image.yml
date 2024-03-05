@@ -1,0 +1,23 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  Test:
+  
+    name: CI
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run containers
+      run: docker compose up -d && docker compose exec backend sh -c "python manage.py makemigrations"
+    - name: Format check
+      run: docker compose exec backend sh -c "flake8 ."
+    # - name: Test
+    #   run: docker compose exec backend sh -c "pytest ."
