@@ -1,5 +1,3 @@
-# ToDo_DRF
-ToDo app project based on Django rest framework
 <h1 align="center">ToDo-DRF</h1>
 ToDo app project based on Django Rest Framework.
 
